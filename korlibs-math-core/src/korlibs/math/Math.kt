@@ -1,5 +1,6 @@
 package korlibs.math
 
+import kotlin.jvm.JvmOverloads
 import kotlin.math.*
 
 const val PIF = PI.toFloat()
@@ -7,10 +8,14 @@ const val PI2F = (PI * 2).toFloat()
 
 fun Double.betweenInclusive(min: Double, max: Double): Boolean = (this >= min) && (this <= max)
 
+@JvmOverloads
 fun almostEquals(a: Float, b: Float, epsilon: Float = 0.0000001f) = almostZero(a - b, epsilon)
+@JvmOverloads
 fun almostZero(a: Float, epsilon: Float = 0.0000001f) = abs(a) <= epsilon
 
+@JvmOverloads
 fun almostEquals(a: Double, b: Double, epsilon: Double = 0.0000001) = almostZero(a - b, epsilon)
+@JvmOverloads
 fun almostZero(a: Double, epsilon: Double = 0.0000001) = abs(a) <= epsilon
 
 fun isEquivalent(a: Double, b: Double, epsilon: Double = 0.0001): Boolean = (a - epsilon < b) && (a + epsilon > b)
