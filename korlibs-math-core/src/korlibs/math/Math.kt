@@ -7,11 +7,11 @@ const val PI2F = (PI * 2).toFloat()
 
 fun Double.betweenInclusive(min: Double, max: Double): Boolean = (this >= min) && (this <= max)
 
-fun almostEquals(a: Float, b: Float) = almostZero(a - b)
-fun almostZero(a: Float) = abs(a) <= 0.0000001
+fun almostEquals(a: Float, b: Float, epsilon: Float = 0.0000001f) = almostZero(a - b, epsilon)
+fun almostZero(a: Float, epsilon: Float = 0.0000001f) = abs(a) <= epsilon
 
-fun almostEquals(a: Double, b: Double) = almostZero(a - b)
-fun almostZero(a: Double) = abs(a) <= 0.0000001
+fun almostEquals(a: Double, b: Double, epsilon: Double = 0.0000001) = almostZero(a - b, epsilon)
+fun almostZero(a: Double, epsilon: Double = 0.0000001) = abs(a) <= epsilon
 
 fun isEquivalent(a: Double, b: Double, epsilon: Double = 0.0001): Boolean = (a - epsilon < b) && (a + epsilon > b)
 
@@ -24,8 +24,18 @@ fun Double.smoothstep(edge0: Double, edge1: Double): Double {
 
 fun log(v: Int, base: Int): Int = log(v.toDouble(), base.toDouble()).toInt()
 fun ln(v: Int): Int = ln(v.toDouble()).toInt()
-fun log2(v: Int): Int = log(v.toDouble(), 2.0).toInt()
-fun log10(v: Int): Int = log(v.toDouble(), 10.0).toInt()
+fun log2(v: Int): Int {
+    if (v < 0) return 0
+    if (v == 0) return Int.MIN_VALUE
+
+    return 31 - v.countLeadingZeroBits()
+}
+fun log10(v: Int): Int {
+    if (v < 0) return 0
+    if (v == 0) return Int.MIN_VALUE
+
+    return v.numberOfDigits(10) - 1
+}
 
 @Deprecated("", ReplaceWith("v.squared()"))
 fun sq(v: Int): Int = v.squared()
