@@ -124,10 +124,27 @@ fun max(a: Double, b: Double, c: Double, d: Double, e: Double) = max(max(max(max
 ////////////////////
 ////////////////////
 
+fun Int.numberOfDigits(radix: Int = 10): Int {
+    if (this == 0) return 1
+    var n = this
+    var digits = 0
+    while (n != 0) {
+        n /= radix
+        digits++
+    }
+    return digits
+}
 
-// @TODO: Optimize this
-fun Int.numberOfDigits(radix: Int = 10): Int = radix.toString(radix).length
-fun Long.numberOfDigits(radix: Int = 10): Int = radix.toString(radix).length
+fun Long.numberOfDigits(radix: Int = 10): Int {
+    if (this == 0L) return 1
+    var n = this
+    var digits = 0
+    while (n != 0L) {
+        n /= radix
+        digits++
+    }
+    return digits
+}
 
 fun Int.cycle(min: Int, max: Int): Int = ((this - min) umod (max - min + 1)) + min
 fun Int.cycleSteps(min: Int, max: Int): Int = (this - min) / (max - min + 1)
