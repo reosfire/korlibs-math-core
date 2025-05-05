@@ -9,30 +9,42 @@ class MathTest {
         assertEquals(1, 7.numberOfDigits())
         assertEquals(2, 42.numberOfDigits())
         assertEquals(3, 123.numberOfDigits())
+        assertEquals(3, 999.numberOfDigits())
+        assertEquals(4, 1000.numberOfDigits())
+        assertEquals(4, 1001.numberOfDigits())
         assertEquals(6, 424242.numberOfDigits())
+        assertEquals(10, Int.MAX_VALUE.numberOfDigits())
 
         assertEquals(1, 15.numberOfDigits(16))
         assertEquals(2, 42.numberOfDigits(16))
         assertEquals(2, 255.numberOfDigits(16))
         assertEquals(3, 256.numberOfDigits(16))
+        assertEquals(8, Int.MAX_VALUE.numberOfDigits(16))
 
         assertEquals(4, 15.numberOfDigits(2))
         assertEquals(5, 16.numberOfDigits(2))
+        assertEquals(31, Int.MAX_VALUE.numberOfDigits(2)) // 31 because fist bit is sign bit and it is 0
 
         //Negative
         assertEquals(1, (-1).numberOfDigits())
         assertEquals(1, (-7).numberOfDigits())
         assertEquals(2, (-42).numberOfDigits())
         assertEquals(3, (-123).numberOfDigits())
+        assertEquals(3, (-999).numberOfDigits())
+        assertEquals(4, (-1000).numberOfDigits())
+        assertEquals(4, (-1001).numberOfDigits())
         assertEquals(6, (-424242).numberOfDigits())
+        assertEquals(10, Int.MIN_VALUE.numberOfDigits())
 
         assertEquals(1, (-15).numberOfDigits(16))
         assertEquals(2, (-42).numberOfDigits(16))
         assertEquals(2, (-255).numberOfDigits(16))
         assertEquals(3, (-256).numberOfDigits(16))
+        assertEquals(8, Int.MIN_VALUE.numberOfDigits(16))
 
         assertEquals(4, (-15).numberOfDigits(2))
         assertEquals(5, (-16).numberOfDigits(2))
+        assertEquals(32, Int.MIN_VALUE.numberOfDigits(2)) // 32 because fist bit is sign bit and it is 1
     }
 
     @Test
@@ -41,30 +53,42 @@ class MathTest {
         assertEquals(1, 7L.numberOfDigits())
         assertEquals(2, 42L.numberOfDigits())
         assertEquals(3, 123L.numberOfDigits())
+        assertEquals(3, 999L.numberOfDigits())
+        assertEquals(4, 1000L.numberOfDigits())
+        assertEquals(4, 1001L.numberOfDigits())
         assertEquals(6, 424242L.numberOfDigits())
+        assertEquals(19, Long.MAX_VALUE.numberOfDigits())
 
         assertEquals(1, 15L.numberOfDigits(16))
         assertEquals(2, 42L.numberOfDigits(16))
         assertEquals(2, 255L.numberOfDigits(16))
         assertEquals(3, 256L.numberOfDigits(16))
+        assertEquals(16, Long.MAX_VALUE.numberOfDigits(16))
 
         assertEquals(4, 15L.numberOfDigits(2))
         assertEquals(5, 16L.numberOfDigits(2))
+        assertEquals(63, Long.MAX_VALUE.numberOfDigits(2)) // 63 because fist bit is sign bit and it is 0
 
         //Negative
         assertEquals(1, (-1L).numberOfDigits())
         assertEquals(1, (-7L).numberOfDigits())
         assertEquals(2, (-42L).numberOfDigits())
         assertEquals(3, (-123L).numberOfDigits())
+        assertEquals(3, (-999L).numberOfDigits())
+        assertEquals(4, (-1000L).numberOfDigits())
+        assertEquals(4, (-1001L).numberOfDigits())
         assertEquals(6, (-424242L).numberOfDigits())
+        assertEquals(19, Long.MIN_VALUE.numberOfDigits())
 
         assertEquals(1, (-15L).numberOfDigits(16))
         assertEquals(2, (-42L).numberOfDigits(16))
         assertEquals(2, (-255L).numberOfDigits(16))
         assertEquals(3, (-256L).numberOfDigits(16))
+        assertEquals(16, Long.MIN_VALUE.numberOfDigits(16))
 
         assertEquals(4, (-15L).numberOfDigits(2))
         assertEquals(5, (-16L).numberOfDigits(2))
+        assertEquals(64, Long.MIN_VALUE.numberOfDigits(2)) // 64 because fist bit is sign bit and it is 1
     }
 
     @Test
